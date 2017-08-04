@@ -21,13 +21,18 @@
     //});
 
     var $sidebarAndWrapper = $("#sidebar, #wrapper");
+    var $icon = $("#sidebarToggle i.fa");
 
     $("#sidebarToggle").on("click", function () {
         $sidebarAndWrapper.toggleClass("hide-sidebar");
         if ($sidebarAndWrapper.hasClass("hide-sidebar")) {
-            $(this).text("Aparece Sidebar");
+            $icon.removeClass("fa-angle-left");
+            $icon.addClass("fa-angle-right");
+            //$(this).text("Aparece Sidebar");
         } else {
-            $(this).text("Desaparece Sidebar");
+            $icon.addClass("fa-angle-left");
+            $icon.removeClass("fa-angle-right");
+            //$(this).text("Desaparece Sidebar");
         }
     });
 

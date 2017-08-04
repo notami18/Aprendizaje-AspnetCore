@@ -5,31 +5,60 @@
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
     <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/lib/bootswatch/yeti/bootstrap.min.css" rel="stylesheet" />        
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <div id="sidebar">
         <img src="~/img/user.png" alt="headshop" class="headshop" />
         <span id="username">Sam Hastings</span>
-        <ul class="menu">
+        <ul class="nav">
             <li class="active"><a asp-controller="app" asp-action="index">Inicio</a> </li>
             <li><a asp-controller="app" asp-action="about">A cerca de</a></li>
             <li><a asp-controller="app" asp-action="contact">Contacto</a></li>
         </ul>
     </div>
     <div id="wrapper">
-        <div id="main">
-            <div>
-                <button id="sidebarToggle">Toggle Menu</button>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <button id="sidebarToggle" class="btn btn-primary btn-sm">
+                            <i class="fa fa-angle-left"></i>
+                        </button>
+                    </li>
+                </ul>
+                <a asp-controller="App" asp-action="Index" class="navbar-brand">The World</a>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" class="btn btn-sm btn-default">
+                            <i class="fa fa-save "></i> Guardar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-sm btn-default">
+                            <i class="fa fa-print "></i> Imprimir
+                        </a>
+                    </li>
+                </ul>
             </div>
-            @RenderBody()
+        </nav>
+        <div id="main" class="container-fluid">
+            <div>
+                @RenderBody()
+            </div>
         </div>
-        <div id="footer">
-            &copy; 2017 My World Company Ltda.
+        <div id="footer" class="container-fluid">
+            <div class="navbar navbar-inverse navbar-fixed-bottom">
+                <h4 class="text-center text-primary"> &copy; 2017 My World Company Ltda. </h4> 
+            </div>
         </div>
     </div>
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
-    @RenderSection("scripts", false)
-
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="~/js/oursite.js"></script>
+
+    @RenderSection("scripts", false)
 </body>
 </html>
