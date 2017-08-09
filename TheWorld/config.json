@@ -1,5 +1,8 @@
 ﻿{
-  "MailSettings" : {
-    "ToAddress" : "andres.minota@base16.co"
+  "MailSettings": {
+    "ToAddress": "andres.minota@base16.co"
+  },
+  "ConnectionStrings": {
+    "WorldContextConnetion": "Server=(localdb)\\MSSQLLocalDB;Database=TheWorldDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
   }
 }
