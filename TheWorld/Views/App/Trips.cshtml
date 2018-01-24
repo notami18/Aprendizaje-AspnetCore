@@ -1,0 +1,35 @@
+﻿
+@model IEnumerable<TheWorld.Models.Trip>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="row">
+    <div class="col-md-6 col-xs-8">
+        <h2>My World</h2>
+        <p>Este será un sitio web divertido</p>
+
+        <form action="/" method="post">
+            <div class="form-group">
+                <label>Fecha:</label>
+                <input class="form-control" type="text" name="name" value="" />
+            </div>
+            <div class="form-group">
+                <label>Ubicación:</label>
+                <input class="form-control" type="text" name="name" value="" />
+            </div>
+            <div>
+                <input class="btn btn-success" type="submit" value="Agregar" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6 col-xs-4">
+        <h2>El Mapa</h2>
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>@item.Name : @item.DateCreate.ToString("d")</li>
+            }
+        </ul>
+    </div>
+</div>

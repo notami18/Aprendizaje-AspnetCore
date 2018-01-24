@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System;
@@ -30,9 +31,27 @@ namespace TheWorld.Controllers.Web
 
         public IActionResult Index() {
 
+            //try
+            //{
+            //    var data = _repository.GetAllTrips(); //_context.Trips.ToList();
+
+            //    return View(data);
+            //}
+            //catch (Exception ex)
+            //{
+            //    _logger.LogError($"Error al obtener viajes en la página de Inicio: {ex.Message}");
+            //    return Redirect("/error");
+            //}
+
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult Trips()
+        {
             try
             {
-                var data = _repository.GetAllTrips(); //_context.Trips.ToList();
+                var data = _repository.GetAllTrips();
 
                 return View(data);
             }
@@ -41,8 +60,6 @@ namespace TheWorld.Controllers.Web
                 _logger.LogError($"Error al obtener viajes en la página de Inicio: {ex.Message}");
                 return Redirect("/error");
             }
-
-            
         }
 
         public IActionResult Contact()

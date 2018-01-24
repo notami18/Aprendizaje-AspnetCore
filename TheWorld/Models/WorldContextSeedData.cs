@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,21 +10,34 @@ namespace TheWorld.Models
     public class WorldContextSeedData
     {
         private WorldContext _context;
+        private UserManager<WorldUser> _userManager;
 
-        public WorldContextSeedData(WorldContext context)
+        public WorldContextSeedData(WorldContext context, UserManager<WorldUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public async Task EnsureSeedDate()
         {
+            if (await _userManager.FindByEmailAsync("sam.hastings@theworld.com") == null)
+            {
+                var user = new WorldUser()
+                {
+                    UserName = "samhastings", 
+                    Email = "sam.hastings@theworld.com"
+                };
+
+                await _userManager.CreateAsync(user, "P@ssw0rd!");
+            }
+
             if (!_context.Trips.Any())
             {
                 var ustrip = new Trip()
                 {
                     DateCreate = DateTime.UtcNow,
                     Name = "US Trip",
-                    UserName = "", // TODO Add UserName
+                    UserName = "samhastings",
                     Stops = new List<Stop>()
                     {
                         new Stop() { Name = "Milton", Arrival = new DateTime(2017, 08, 4), Latitude = 33.451245,  Order = 0},
@@ -41,7 +55,7 @@ namespace TheWorld.Models
                 {
                     DateCreate = DateTime.UtcNow, 
                     Name = "WorldTrip",
-                    UserName = "", // TODO Add UserName
+                    UserName = "samhastings",
                     Stops = new List<Stop>()
                     {
                         new Stop() { Name = "Milton", Arrival = new DateTime(2017, 08, 4), Latitude = 33.451245,  Order = 0},

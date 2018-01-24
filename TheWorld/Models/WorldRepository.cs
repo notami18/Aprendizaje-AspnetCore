@@ -43,15 +43,33 @@ namespace TheWorld.Models
                 .FirstOrDefault();
         }
 
-        public void addStop(string tripName, Stop newStop)
+        public void addStop(string tripName, Stop newStop, string username)
         {
-            var trip = GetTripByName(tripName);
+            var trip = GetUserTripByName(tripName, username);
 
             if (trip != null)
             {
                 trip.Stops.Add(newStop);
                 _context.Stops.Add(newStop);
             }
+        }
+
+        public IEnumerable<Trip> GetTripsByUsername(string name)
+        {
+            return _context
+                .Trips
+                .Include(t => t.Stops)
+                .Where(t => t.UserName == name)
+                .ToList();
+        }
+
+        public Trip GetUserTripByName(string tripName, string username)
+        {
+            return _context
+               .Trips
+               .Include(t => t.Stops)
+               .Where(t => t.Name == tripName && t.UserName == username)
+               .FirstOrDefault();
         }
     }
 }
