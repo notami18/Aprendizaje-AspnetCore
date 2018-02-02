@@ -4,6 +4,14 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\js\simpleControls.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\simpleControls.js" />
+  </ItemGroup>
+
   <!--<ItemGroup>
     <Content Include="wwwroot\css\site.css" />
     <Content Include="wwwroot\img\user.png" />
@@ -25,6 +33,10 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\simpleControls.js" />
   </ItemGroup>
 
 </Project>
