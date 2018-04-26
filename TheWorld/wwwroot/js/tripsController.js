@@ -2,7 +2,7 @@
 
     "use strict";
 
-    angular.module("app-trips")
+    angular.module("app-trips", [])
         .controller("tripsController", tripsController);
 
     function tripsController($http) {    

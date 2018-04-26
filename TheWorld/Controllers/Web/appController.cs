@@ -13,16 +13,16 @@ using TheWorld.ViewModels;
 
 namespace TheWorld.Controllers.Web
 {
-    public class appController : Controller
+    public class AppController : Controller
     {
         private IMailService _mailService;
         private IConfigurationRoot _config;
         private IWorldRepository _repository;
-        private ILogger<appController> _logger;
+        private ILogger<AppController> _logger;
 
         //private WorldContext _context;
 
-        public appController(IMailService mailService, IConfigurationRoot  config, IWorldRepository repository, ILogger<appController> logger) {
+        public AppController(IMailService mailService, IConfigurationRoot  config, IWorldRepository repository, ILogger<AppController> logger) {
             _mailService = mailService;
             _config = config;
             _repository = repository;
